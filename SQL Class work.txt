@@ -1,0 +1,269 @@
+SQL Class work 
+Enter password: ******
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 11
+Server version: 8.0.46 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2026, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use mydb;
+Database changed
+mysql> show tables;
++----------------+
+| Tables_in_mydb |
++----------------+
+| customers      |
+| employee       |
+| stu            |
+| studnet        |
++----------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from stu;
++--------+--------------+-----------+---------+----------+
+| Stu_id | Stu_Name     | Stu_Class | Stu_Age | Stu_Fees |
++--------+--------------+-----------+---------+----------+
+|      1 | Rudra Tailor |        12 |      20 |     5000 |
+|      2 | Vidhi Patel  |        10 |      40 |     5500 |
+|      3 | Nadini Patel |        12 |      25 |     6000 |
+|      4 | Sakashi Saha |        11 |      21 |     7000 |
+|      5 | Hardik Bhai  |         8 |      23 |        0 |
+|      6 | Divya Patel  |        12 |      25 |     7000 |
++--------+--------------+-----------+---------+----------+
+6 rows in set (0.00 sec)
+
+mysql> select * from studnet;
++--------+-----------------+----------+----------------+---------+-----------+
+| stu_id | Stu_Name        | Stu_Fees | Stu_subject    | Stu_age | Stu_Class |
++--------+-----------------+----------+----------------+---------+-----------+
+|      1 | Divyeesha Patil |     3000 | Maths          |      16 |        10 |
+|      2 | Mayra Pandit    |     2000 | Social Science |      16 |         9 |
+|      3 | Kunal Purohit   |     4500 | Chemistry      |      17 |        11 |
+|      4 | Manvi Tyagi     |     2000 | Social Science |      16 |         9 |
+|      5 | jay Yadav       |     3000 | Maths          |      16 |         9 |
+|      6 | Tisha Shah      |     2500 | Science        |      15 |         9 |
+|      7 | Surbhi Soni     |     4000 | Chemistry      |      17 |        10 |
++--------+-----------------+----------+----------------+---------+-----------+
+7 rows in set (0.02 sec)
+
+mysql> cerate table employees;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'cerate table employees' at line 1
+mysql> cerate table employees(emp_id int primary key auto_increment,EmpName varchar(50),Emp_Email vatchar(50),age int,city varchar(50));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'cerate table employees(emp_id int primary key auto_increment,EmpName varchar(50)' at line 1
+mysql> create table employees(emp_id int primary key auto_increment,EmpName varchar(50),Emp_Email vatchar(50),age int,city varchar(50));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'vatchar(50),age int,city varchar(50))' at line 1
+mysql> create table employees(emp_id int primary key auto_increment,EmpName varchar(50),Emp_Email varchar(50),age int,city varchar(50));
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> decribe employees;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'decribe employees' at line 1
+mysql> describe employees;
++-----------+-------------+------+-----+---------+----------------+
+| Field     | Type        | Null | Key | Default | Extra          |
++-----------+-------------+------+-----+---------+----------------+
+| emp_id    | int         | NO   | PRI | NULL    | auto_increment |
+| EmpName   | varchar(50) | YES  |     | NULL    |                |
+| Emp_Email | varchar(50) | YES  |     | NULL    |                |
+| age       | int         | YES  |     | NULL    |                |
+| city      | varchar(50) | YES  |     | NULL    |                |
++-----------+-------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> insert into employees(emp_id,EmpName,Emp_Email,age,city)values
+    ->
+    -> ("Divya","divya@gamil.com",24,"Vadodara");
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into employees(emp_id,EmpName,Emp_Email,age,city)values
+    -> ("Divya","divya@gamil.com",24,"Vadodara");
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into employees(emp_id,EmpName,Emp_Email,age,city) values
+    -> ("Divya","divya@gamil.com",24,"Vadodara");
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into employees(EmpName,Emp_Email,age,city)values
+    -> ("Divya","divya@gamil.com",24,"Vadodara");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employees(EmpName,Emp_Email,age,city) values
+    -> ("Vidhi","vidhi@gamil.com",20,"vadodara");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employees(EmpName,Emp_Email,age,city) values
+    -> ("Sakshi","sakshi@gamil.com",21,"Ahmedabad"),
+    -> ("Rudra","rudra@gamil.com",21,"Padra"),
+    -> ("Ashwini","ashwini@gamil.com",24,"vadodara");
+Query OK, 3 rows affected (0.02 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+
+mysql> insert into employees(EmpName,Emp_Email,age,city) values
+    -> ("Hardik","hardik@gamil.com",23,"vadodar");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employees(EmpName,Emp_Email,age,city) values
+    -> ("Nadini","nadini@gamil.com",19,"vadodara");
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select * employees;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'employees' at line 1
+mysql> select EmpName, Emp_Email from employees where age >20;
++---------+-------------------+
+| EmpName | Emp_Email         |
++---------+-------------------+
+| Divya   | divya@gamil.com   |
+| Sakshi  | sakshi@gamil.com  |
+| Rudra   | rudra@gamil.com   |
+| Ashwini | ashwini@gamil.com |
+| Hardik  | hardik@gamil.com  |
++---------+-------------------+
+5 rows in set (0.00 sec)
+
+mysql> select EmpName, Emp_Email from employees where age >20 order by age desc;
++---------+-------------------+
+| EmpName | Emp_Email         |
++---------+-------------------+
+| Divya   | divya@gamil.com   |
+| Ashwini | ashwini@gamil.com |
+| Hardik  | hardik@gamil.com  |
+| Sakshi  | sakshi@gamil.com  |
+| Rudra   | rudra@gamil.com   |
++---------+-------------------+
+5 rows in set (0.00 sec)
+
+mysql> select EmpName, Emp_Email,age from employees where age >20 order by age desc;
++---------+-------------------+------+
+| EmpName | Emp_Email         | age  |
++---------+-------------------+------+
+| Divya   | divya@gamil.com   |   24 |
+| Ashwini | ashwini@gamil.com |   24 |
+| Hardik  | hardik@gamil.com  |   23 |
+| Sakshi  | sakshi@gamil.com  |   21 |
+| Rudra   | rudra@gamil.com   |   21 |
++---------+-------------------+------+
+5 rows in set (0.00 sec)
+
+mysql> select max(age) as ~Maximun Age~ from employees;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '~Maximun Age~ from employees' at line 1
+
+mysql> use mtdb;
+ERROR 1049 (42000): Unknown database 'mtdb'
+mysql> use mydb;
+Database changed
+mysql> show tables;
++----------------+
+| Tables_in_mydb |
++----------------+
+| customers      |
+| employee       |
+| employees      |
+| stu            |
+| studnet        |
++----------------+
+5 rows in set (0.01 sec)
+
+mysql> describe employees;
++-----------+-------------+------+-----+---------+----------------+
+| Field     | Type        | Null | Key | Default | Extra          |
++-----------+-------------+------+-----+---------+----------------+
+| emp_id    | int         | NO   | PRI | NULL    | auto_increment |
+| EmpName   | varchar(50) | YES  |     | NULL    |                |
+| Emp_Email | varchar(50) | YES  |     | NULL    |                |
+| age       | int         | YES  |     | NULL    |                |
+| city      | varchar(50) | YES  |     | NULL    |                |
++-----------+-------------+------+-----+---------+----------------+
+5 rows in set (0.01 sec)
+
+mysql> select * employees;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'employees' at line 1
+mysql> select * employees;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'employees' at line 1
+mysql> select  * from employees;
++--------+---------+-------------------+------+-----------+
+| emp_id | EmpName | Emp_Email         | age  | city      |
++--------+---------+-------------------+------+-----------+
+|      1 | Divya   | divya@gamil.com   |   24 | Vadodara  |
+|      2 | Vidhi   | vidhi@gamil.com   |   20 | vadodara  |
+|      3 | Sakshi  | sakshi@gamil.com  |   21 | Ahmedabad |
+|      4 | Rudra   | rudra@gamil.com   |   21 | Padra     |
+|      5 | Ashwini | ashwini@gamil.com |   24 | vadodara  |
+|      6 | Hardik  | hardik@gamil.com  |   23 | vadodar   |
+|      7 | Nadini  | nadini@gamil.com  |   19 | vadodara  |
++--------+---------+-------------------+------+-----------+
+7 rows in set (0.00 sec)
+
+mysql> select EmpName,Emp_Email,age,from employees where age > 20 order by age desc;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from employees where age > 20 order by age desc' at line 1
+mysql> select EmpName,Emp_Email,age from employees where age > 20 order by age desc;
++---------+-------------------+------+
+| EmpName | Emp_Email         | age  |
++---------+-------------------+------+
+| Divya   | divya@gamil.com   |   24 |
+| Ashwini | ashwini@gamil.com |   24 |
+| Hardik  | hardik@gamil.com  |   23 |
+| Sakshi  | sakshi@gamil.com  |   21 |
+| Rudra   | rudra@gamil.com   |   21 |
++---------+-------------------+------+
+5 rows in set (0.00 sec)
+
+mysql> select max(age) as 'Maximun Age' from employees;
++-------------+
+| Maximun Age |
++-------------+
+|          24 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select min(age) as 'Minimun Age' from employees;
++-------------+
+| Minimun Age |
++-------------+
+|          19 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select avg(age) as 'Average Age' from employees;
++-------------+
+| Average Age |
++-------------+
+|     21.7143 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select sum(age) as 'Total Age' from employees;
++-----------+
+| Total Age |
++-----------+
+|       152 |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> select std(age) as 'Standard Devition' from employees;
++--------------------+
+| Standard Devition  |
++--------------------+
+| 1.8294640678379572 |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> delete from employees where emp_id=7;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select * from employees;
++--------+---------+-------------------+------+-----------+
+| emp_id | EmpName | Emp_Email         | age  | city      |
++--------+---------+-------------------+------+-----------+
+|      1 | Divya   | divya@gamil.com   |   24 | Vadodara  |
+|      2 | Vidhi   | vidhi@gamil.com   |   20 | vadodara  |
+|      3 | Sakshi  | sakshi@gamil.com  |   21 | Ahmedabad |
+|      4 | Rudra   | rudra@gamil.com   |   21 | Padra     |
+|      5 | Ashwini | ashwini@gamil.com |   24 | vadodara  |
+|      6 | Hardik  | hardik@gamil.com  |   23 | vadodar   |
++--------+---------+-------------------+------+-----------+
+6 rows in set (0.00 sec)
+
+mysql>
